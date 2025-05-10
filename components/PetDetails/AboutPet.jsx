@@ -14,7 +14,7 @@ export default function AboutPet({ pet }) {
           fontFamily: "specialfont",
           fontSize: 20,
         }}>
-        About {pet?.name}
+        Thông Tin {pet?.name}
       </Text>
       <Text
         numberOfLines={readMore ? 3 : 20}
@@ -47,7 +47,7 @@ export default function AboutPet({ pet }) {
               fontSize: 12,
               color: Colors.xanh4fb3ff,
             }}>
-            Less
+            Thu gọn
           </Text>
         </Pressable>
       )}

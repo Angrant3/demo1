@@ -1,6 +1,7 @@
 import { View, Text, Image } from "react-native";
 import React from "react";
-import MaterialCommunityIcons from "@expo/vector-icons/MaterialCommunityIcons";
+import MarkFav from "../MarkFav";
+
 
 export default function PetInfo({ pet }) {
   return (
@@ -23,26 +24,34 @@ export default function PetInfo({ pet }) {
           alignItems: "center",
         }}>
         <View>
-          <Text
+        <Text
             style={{
               fontFamily: "calsans",
-              
+              fontSize: 20,
+            }}>
+            TÊN THÚ NUÔI :
+          </Text>
+          <Text
+            style={{
+              fontFamily: "OutfitExtraBold",
+              color: "#FF7F68",
               fontSize: 25,
             }}>
             {pet?.name}
           </Text>
 
-          <Text
+          {/* <Text
             style={{
               fontFamily: "outfit",
               fontSize: 15,
-              color: "#FF7F48",
+              
             }}>
             {pet?.address}
-          </Text>
+          </Text> */}
+
         </View>
-        <MaterialCommunityIcons name="heart-outline" size={30} color="black" />
-      </View>
+        <MarkFav pet={pet}/>
+        </View>
     </View>
   );
 }

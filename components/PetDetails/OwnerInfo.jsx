@@ -1,3 +1,4 @@
+//components/PetDetails/OwnerInfo.jsx
 import { View, Text, Image, StyleSheet } from "react-native";
 import React from "react";
 import Colors from "../../constants/Colors";
@@ -25,7 +26,7 @@ export default function OwnerInfo({ pet }) {
               fontFamily: "outfit",
               color: Colors.xam8f8e8d,
             }}>
-            Pet Owner
+            Chủ Vật Nuôi 
           </Text>
         </View>
       </View>

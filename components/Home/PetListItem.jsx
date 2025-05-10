@@ -1,7 +1,9 @@
+//components/PetListItem.jsx
 import { View, Text, Image, TouchableOpacity } from "react-native";
 import React from "react";
 import Colors from "../../constants/Colors";
 import { useRouter } from "expo-router";
+import MarkFav from './../../components/MarkFav'
 
 export default function PetListItem({ pets }) {
   const router = useRouter();
@@ -12,10 +14,17 @@ export default function PetListItem({ pets }) {
         padding: 10,
         marginRight: 10,
         marginBottom: 10,
-        backgroundColor: Colors. NAUNHAT,
+        backgroundColor: Colors.EBD4B1,
         borderRadius: 10,
       }}>
-        
+        <View style={{
+          position:'absolute',
+          zIndex:10,
+          right:10,
+          top:10,
+        }}>
+          <MarkFav pet={pets}  />
+        </View>
       <Image
         source={{ uri: pets.imageUrl }}
         style={{
@@ -49,7 +58,7 @@ export default function PetListItem({ pets }) {
           style={{
             fontFamily: "outfit",
             color: Colors.BLACK,
-            backgroundColor: Colors.FFF1C9,
+            backgroundColor: Colors.WHITE,
             borderRadius: 10,
             alignItems: "center",
             textAlign: "center",

@@ -9,6 +9,7 @@ import * as SecureStore from "expo-secure-store";
 import { useEffect } from 'react';
 
 
+
 SplashScreen.preventAutoHideAsync();
 const tokenCache={
   async getToken(key){
@@ -47,6 +48,7 @@ export default function RootLayout() {
     "outfitfont": require("../assets/fonts/Outfit-VariableFont_wght.ttf"),
     "outfitbold": require("../assets/fonts/Outfit-Bold.ttf"),
     "calsans": require("../assets/fonts/CalSans-Regular.ttf"),
+    "OutfitExtraBold": require("../assets/fonts/Outfit-ExtraBold.ttf"),
   });
 
   useEffect(() => {
@@ -63,9 +65,13 @@ export default function RootLayout() {
       
     <ClerkProvider tokenCache={tokenCache} publishableKey={publishableKey}>
       <Stack>
-        <Stack.Screen name="index" />
-        <Stack.Screen name="(tabs)" />
+        <Stack.Screen name="index"  options={{headerShown:false}}/>
+        <Stack.Screen name="(tabs)"  options={{headerShown:false}}/>
         <Stack.Screen name="login/index"  options={{headerShown:false}}/>
+        <Stack.Screen name="add-new-pet" />
+        <Stack.Screen name="Aboutapp" options={{ title: "Hỗ trợ" }} />
+        <Stack.Screen name="Support" options={{ title: "Thông tin" }} />
+
       </Stack>
     </ClerkProvider>
   );

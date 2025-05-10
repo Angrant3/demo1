@@ -3,11 +3,14 @@ import React, { useEffect, useState } from "react";
 import { collection, getDocs } from "firebase/firestore";
 import { db } from "../../config/FirebaseConfig";
 import Colors from "./../../constants/Colors";
+import { Dimensions } from 'react-native';
 
 export default function Category({ category }) {
   const [categoryList, setCategoryList] = useState([]);
   const [selectedCategory, setSelectedCategory] = useState("Dogs");
-  
+  const screenWidth = Dimensions.get('window').width;
+  const itemWidth = screenWidth / 4;
+
   const getCategories = async () => {
     setCategoryList([]);
     const snapShot = await getDocs(collection(db, "Category"));
@@ -27,49 +30,55 @@ export default function Category({ category }) {
       }}>
       <Text
         style={{
-          fontFamily: "specialfont",
+          fontFamily: "OutfitExtraBold",
           fontSize: 20,
         }}>
-        Category
+        Loại Vật Nuôi 
       </Text>
       <FlatList
-        data={categoryList}
-        numColumns={4}
-        showsHorizontalScrollIndicator={false}
-        renderItem={({ item }) => (
-          <TouchableOpacity
-            onPress={() => {
-              setSelectedCategory(item?.name);
-              category(item?.name);
-            }}
-            style={{
-              flex: 1,
-            }}>
-            <View
-              style={[
-                styles.container,
-                selectedCategory == item?.name &&
-                  styles.selectedCategoryContainer,
-              ]}>
-              <Image
-                source={{ uri: item?.imageUrl }}
-                style={{
-                  width: 40,
-                  height: 40,
-                  borderRadius: 10,
-                }}
-              />
-            </View>
-            <Text
-              style={{
-                textAlign: "center",
-                fontFamily: "outfit",
-              }}>
-              {item?.name}
-            </Text>
-          </TouchableOpacity>
-        )}
-      />
+  data={categoryList}
+  horizontal={true}
+  pagingEnabled={true} // 👈 Cuộn theo trang
+  showsHorizontalScrollIndicator={false}
+  keyExtractor={(item, index) => index.toString()}
+  snapToInterval={screenWidth} // 👈 Snap từng "page"
+  decelerationRate="fast"
+  renderItem={({ item }) => (
+    <TouchableOpacity
+      onPress={() => {
+        setSelectedCategory(item?.name);
+        category(item?.name);
+      }}
+      style={{
+        width: itemWidth,
+        alignItems: "center",
+        justifyContent: "center",
+      }}
+    >
+      <View
+        style={[
+          styles.container,
+          selectedCategory === item?.name && styles.selectedCategoryContainer,
+        ]}>
+        <Image
+          source={{ uri: item?.imageUrl }}
+          style={{
+            width: 40,
+            height: 40,
+            borderRadius: 10,
+          }}
+        />
+      </View>
+      <Text
+        style={{
+          textAlign: "center",
+          fontFamily: "outfit",
+        }}>
+        {item?.name}
+      </Text>
+    </TouchableOpacity>
+  )}
+/>
     </View>
   );
 }

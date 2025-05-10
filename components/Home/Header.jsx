@@ -14,14 +14,14 @@ export default function Header() {
         <View>
             
         <Text  style ={{
-            fontFamily: 'specialfont',
-            fontSize :30
+            fontFamily: 'outfitExtraBold',
+            fontSize :20
         }}
-        > Welcom , </Text>
+        > Chào Mừng, </Text>
 
         <Text style ={{
-            fontFamily: 'specialfont',
-            fontSize :25
+            fontFamily: 'outfitbold',
+            fontSize :30
         }}
         > {user?.fullName}
         </Text>

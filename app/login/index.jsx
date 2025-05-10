@@ -1,3 +1,4 @@
+//app\login\index.jsx
 import { View, Text, Image, Pressable, ImageBackground } from 'react-native';
 import React, { useCallback, useEffect } from 'react';
 import Colors from './../../constants/Colors';
@@ -77,12 +78,12 @@ export default function LoginScreen() {
       }}>
         <Text style={{
           fontSize: 25,
-          fontFamily: 'poetfont',
+          fontFamily: 'OutfitExtraBold',
           textAlign: 'center',
           color: 'black',
-          marginBottom: 10, // cách chữ với nút
+          marginBottom: 10,
         }}>
-          Be Ready To Be My FrienD
+         Hãy Chuẩn Bị Đón Nhận Người Bạn Mới
         </Text>
 
         <Pressable
@@ -96,11 +97,11 @@ export default function LoginScreen() {
         >
           <Text style={{
             fontSize: 30,
-            fontFamily: 'candal',
+            fontFamily: 'OutfitExtraBold',
             textAlign: 'center',
             color: 'white',
           }}>
-            Get Started
+            Bắt Đầu
           </Text>
         </Pressable>
       </View>
